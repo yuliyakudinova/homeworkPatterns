@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/oc0tls9u34qemoju?svg=true)](https://ci.appveyor.com/project/yuliyakudinova/homeworkpatterns)
