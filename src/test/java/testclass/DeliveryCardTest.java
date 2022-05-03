@@ -11,32 +11,26 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static java.awt.SystemColor.info;
 
 public class DeliveryCardTest {
     private Faker faker;
     Users info = DataGenerator
             .Registration
             .generateInfo("ru");
-@BeforeEach
-    void setUpAll() {
-    open("http://localhost:9999");
 
-}
-    public String chooseDate(int days) {
-        return
-                LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    @BeforeEach
+    void setUpAll() {
+        open("http://localhost:9999");
     }
+
     @Test
     void shouldSendFormWithDate() {
         Configuration.holdBrowserOpen = true;
-        String chooseDate = chooseDate(5);
+        String chooseDate = DataGenerator.chooseDate(5);
         $("[placeholder='Город']").setValue(info.getCityName());
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(chooseDate);
         $("[data-test-id='name'] input").setValue(info.getName());
